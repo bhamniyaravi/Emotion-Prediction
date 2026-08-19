@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spectrometer — Emotion Reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <div class="atmosphere" aria-hidden="true">
+    <div class="blob blob--a"></div>
+    <div class="blob blob--b"></div>
+    <div class="blob blob--c"></div>
+    <div class="grain"></div>
+  </div>
+
+  <main class="stage">
+
+    <header class="masthead">
+      <span class="eyebrow">EMOTION SPECTROMETER · v1</span>
+      <h1 class="title">What does this sentence<br /><em>feel</em> like?</h1>
+      <p class="subtitle">Type a line. The instrument reads its emotional wavelength across six channels — sadness, joy, love, anger, fear, surprise.</p>
+    </header>
+
+    <section class="console" aria-label="Input console">
+      <div class="console__panel">
+        <label class="console__label" for="text-input">
+          <span>SAMPLE INPUT</span>
+          <span id="char-count" class="console__count">0 / 2000</span>
+        </label>
+        <textarea
+          id="text-input"
+          class="console__field"
+          maxlength="2000"
+          rows="4"
+          placeholder="I finally finished the project after three sleepless nights…"
+        ></textarea>
+
+        <div class="console__row">
+          <p id="status-line" class="status-line" role="status" aria-live="polite">Ready to read.</p>
+          <button id="analyze-btn" class="btn" type="button">
+            <span class="btn__label">Analyze</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="history" id="history" aria-label="Recent readings"></div>
+    </section>
+
+    <section class="reading" aria-label="Emotion reading">
+
+      <div class="compass" id="compass">
+        <div class="compass__rings" aria-hidden="true">
+          <div class="ring ring--1"></div>
+          <div class="ring ring--2"></div>
+          <div class="ring ring--3"></div>
+        </div>
+
+        <div class="compass__core" id="compass-core">
+          <span class="core__emoji" id="core-emoji">◌</span>
+          <span class="core__label" id="core-label">awaiting input</span>
+          <span class="core__confidence" id="core-confidence"></span>
+        </div>
+
+        <div class="spokes" id="spokes"><!-- injected by script.js --></div>
+      </div>
+
+      <div class="ledger" id="ledger" aria-label="Probability breakdown">
+        <!-- injected by script.js -->
+      </div>
+
+    </section>
+
+    <footer class="foot">
+      <span>Bi-directional GRU · trained on six-class emotion corpus</span>
+    </footer>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
