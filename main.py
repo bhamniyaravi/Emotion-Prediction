@@ -91,6 +91,9 @@ class PredictionResponse(BaseModel):
     all_probabilities : dict[str, float]
 
 class HealthResponse(BaseModel):
+    # allow the "model_loaded" field name (avoids pydantic's protected "model_" namespace warning)
+    model_config = {"protected_namespaces": ()}
+
     status : str
     model_loaded : bool
 
